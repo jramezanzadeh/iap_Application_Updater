@@ -1,12 +1,26 @@
 QT += quick
+QT += serialport
 
 CONFIG += c++11
+
+CONFIG += qmltypes
+QML_IMPORT_NAME = Serial
+QML_IMPORT_MAJOR_VERSION = 1
 
 # You can make your code fail to compile if it uses deprecated APIs.
 # In order to do so, uncomment the following line.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+        AppProgrammer/AppVerificationState.cpp \
+        AppProgrammer/BootLoaderProtocol.cpp \
+        AppProgrammer/IdleState.cpp \
+        AppProgrammer/SendBlocksState.cpp \
+        AppProgrammer/SendHeaderState.cpp \
+        AppProgrammer/StartState.cpp \
+        AppProgrammer/State.cpp \
+        AppProgrammer/UartAppProgrammer.cpp \
+        helpertfunc.cpp \
         main.cpp
 
 RESOURCES += qml.qrc
@@ -24,3 +38,17 @@ QML_DESIGNER_IMPORT_PATH =
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+INCLUDEPATH += \
+    AppProgrammer/
+
+HEADERS += \
+    AppProgrammer/AppVerificationState.h \
+    AppProgrammer/BootLoaderProtocol.h \
+    AppProgrammer/IdleState.h \
+    AppProgrammer/SendBlocksState.h \
+    AppProgrammer/SendHeaderState.h \
+    AppProgrammer/StartState.h \
+    AppProgrammer/State.h \
+    AppProgrammer/UartAppProgrammer.h \
+    helpertfunc.h
